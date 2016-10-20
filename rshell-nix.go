@@ -56,6 +56,9 @@ chk_conn:
 					cmd.Process.Kill()
 				}
 			}
+			if ouTtext == "" {
+				ouTtext = "命令：" + status + "执行没有输出，请检查程序的结果"
+			}
 			textChan <- ouTtext
 		}(cmd)
 
